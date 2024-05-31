@@ -12,3 +12,7 @@ public class PetShopController {
     }
 
 }
+
+// error status
+// 2xx status
+// check if table contains correct values i.e name,species e.t.c
