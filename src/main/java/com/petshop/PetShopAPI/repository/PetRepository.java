@@ -6,7 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PetRepository extends CrudRepository<Pet,Integer> {
-    // interface vs class, class defines all functions, interface not implementation of function
-    // interface = bundle of functions
-    // contract of what class can do without saying how to do it
+
 }

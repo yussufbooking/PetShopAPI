@@ -21,9 +21,7 @@ public class Pet {
 
     @Column(nullable = false)
     private String species;
-
     private String breed;
-
     private Integer age;
 
     @Column(nullable = false)
