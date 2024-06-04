@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.petshop.PetShopAPI.controller.PetShopController
 import com.petshop.PetShopAPI.dto.PetDto
 import com.petshop.PetShopAPI.service.PetShopService
+import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
@@ -21,21 +22,14 @@ class PetShopControllerTest extends Specification {
 
     @Autowired
     private ObjectMapper objectMapper
-    @Autowired
-    private PetShopService petShopService
 
-    def "should return Hello World"(){
-        when:
-        def result = mockMvc.perform(get("/"))
+    @SpringBean
+    private PetShopService petShopService = Mock()
 
-        then:
-        result.andExpect(status().isOk())
-                .andExpect(content().string("Hello World"))
-    }
 
     def "should return empty list given no pets exist in database"(){
         given:
-        petShopService.getAllPets() >> objectMapper.writeValueAsString([])
+        petShopService.getAllPets() >> []
         when:
         def result = mockMvc.perform(get("/pets"))
         then:

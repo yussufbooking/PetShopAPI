@@ -18,10 +18,6 @@ import java.util.List;
 public class PetShopController {
     private PetShopService petShopService;
 
-    @GetMapping("/")
-    public String helloWorld(){
-        return "Hello World";
-    }
 
     @GetMapping("/pets")
     @ResponseStatus(HttpStatus.OK)
