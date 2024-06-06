@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,5 +30,16 @@ public class PetShopService {
             }
             return new PetDto();
         }).collect(Collectors.toList());
+    }
+
+    public PetDto getPetByID(Integer petID) {
+        Optional<Pet> pet_optional =  petRepository.findById(petID);
+        PetDto pet = pet_optional.map(pet1 ->
+            new PetDto(pet1.getName(),pet1.getSpecies(),pet1.getAge(),pet1.getPrice())
+        ).orElse(null);
+        if(pet == null){
+            throw new RuntimeException("No pet found");
+        }
+        return pet;
     }
 }

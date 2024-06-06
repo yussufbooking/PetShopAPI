@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Pets")
+@Table(name = "pets")
 @Data // GETTER/SETTERS generation
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,4 +31,4 @@ public class Pet {
     private double price;
 }
 
-//ENTITY(50 all values in db) VS DTO(can send specfic values e.g all values but id)
+//ENTITY(50 all values in db) VS DTO(can send specific values e.g all values but id)

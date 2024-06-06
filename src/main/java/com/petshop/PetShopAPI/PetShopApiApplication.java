@@ -2,9 +2,9 @@ package com.petshop.PetShopAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication (exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication(scanBasePackages = "com.petshop.PetShopAPI")
+//explicit scan of packages
 public class PetShopApiApplication {
 
 	public static void main(String[] args) {
