@@ -51,12 +51,12 @@ class PetShopControllerTest extends Specification {
 
     def "should return empty list when given petID does not exist in database"(){
         given:
-        petShopService.getPetByID(99) >> null
+        petShopService.getPetByID(99) >> { throw new RuntimeException("Pet not found") }
         println(petShopService.getPetByID(99))
         when:
         def result = mockMvc.perform(get("/pet/99"))
         then:
-        result.andExpect(content().string(""))
+        result.andExpect(content().string(" "))
 
     }
 

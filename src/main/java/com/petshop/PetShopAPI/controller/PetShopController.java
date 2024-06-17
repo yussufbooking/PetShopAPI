@@ -27,11 +27,14 @@ public class PetShopController {
     @GetMapping("/pet/{petID}")
     @ResponseStatus(HttpStatus.OK)
     public PetDto getPetByID(@PathVariable Integer petID){
-        try {
         return petShopService.getPetByID(petID);
-        } catch (RuntimeException e) {
-            throw new RuntimeException("No Pet found" , e);
-        }
+    }
+
+    @PostMapping("/pet")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Pet addPet(@RequestBody Pet pet){
+        Pet savedPet = petShopService.addPet(pet);
+        return savedPet;
     }
 
 }

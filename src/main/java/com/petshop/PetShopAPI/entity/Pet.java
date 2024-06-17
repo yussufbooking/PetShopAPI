@@ -29,6 +29,9 @@ public class Pet {
 
     @Column(nullable = false)
     private double price;
+
+    @Column(nullable = false)
+    private String gender;
 }
 
 //ENTITY(50 all values in db) VS DTO(can send specific values e.g all values but id)

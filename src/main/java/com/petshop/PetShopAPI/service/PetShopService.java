@@ -42,4 +42,9 @@ public class PetShopService {
         }
         return pet;
     }
+
+    public Pet addPet(Pet pet){
+        return petRepository.save(pet);
+    }
+
 }
