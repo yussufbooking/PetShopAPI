@@ -47,4 +47,12 @@ public class PetShopService {
         return petRepository.save(pet);
     }
 
+    public void deletePet(Integer id){
+        if(petRepository.existsById(id)){
+            petRepository.deleteById(id);
+        } else {
+            throw new IllegalArgumentException("Pet not found");
+        }
+    }
+
 }

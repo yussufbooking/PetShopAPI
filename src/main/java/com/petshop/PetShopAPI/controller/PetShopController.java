@@ -37,5 +37,11 @@ public class PetShopController {
         return savedPet;
     }
 
+    @DeleteMapping("/pet/{petID}")
+    @ResponseStatus (HttpStatus.OK)
+    public void deletePet(@PathVariable Integer petID){
+        petShopService.deletePet(petID);
+    }
+
 }
 
