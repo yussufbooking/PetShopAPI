@@ -55,4 +55,17 @@ public class PetShopService {
         }
     }
 
+    public Pet updatePet(Integer id, Pet updatedPet) {
+        return petRepository.findById(id).map(pet -> {
+            pet.setName(updatedPet.getName());
+            pet.setSpecies(updatedPet.getSpecies());
+            pet.setBreed(updatedPet.getBreed());
+            pet.setAge(updatedPet.getAge());
+            pet.setPrice(updatedPet.getPrice());
+            pet.setSold(updatedPet.isSold());
+            pet.setGender(updatedPet.getGender());
+            return petRepository.save(pet);
+        }).orElseThrow(() -> new IllegalArgumentException("Pet not found with id " + id));
+    }
+
 }

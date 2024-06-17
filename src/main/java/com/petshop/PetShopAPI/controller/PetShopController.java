@@ -43,5 +43,11 @@ public class PetShopController {
         petShopService.deletePet(petID);
     }
 
+    @PutMapping("/pet/{petID}")
+    @ResponseStatus(HttpStatus.OK)
+    public Pet updatePet(@PathVariable("petID") Integer id, @RequestBody Pet pet) {
+        return petShopService.updatePet(id, pet);
+    }
+
 }
 
