@@ -50,6 +50,7 @@ public class PetShopService {
     public void deletePet(Integer id){
         if(petRepository.existsById(id)){
             petRepository.deleteById(id);
+            System.out.println("Pet with id " + id + " deleted");
         } else {
             throw new IllegalArgumentException("Pet not found");
         }

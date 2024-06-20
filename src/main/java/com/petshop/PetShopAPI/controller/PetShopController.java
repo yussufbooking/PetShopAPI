@@ -32,15 +32,16 @@ public class PetShopController {
 
     @PostMapping("/pet")
     @ResponseStatus(HttpStatus.CREATED)
-    public Pet addPet(@RequestBody Pet pet){
-        Pet savedPet = petShopService.addPet(pet);
-        return savedPet;
+    public String addPet(@RequestBody Pet pet){
+        petShopService.addPet(pet);
+        return "Pet has been added successfully";
     }
 
     @DeleteMapping("/pet/{petID}")
     @ResponseStatus (HttpStatus.OK)
-    public void deletePet(@PathVariable Integer petID){
+    public String deletePet(@PathVariable Integer petID){
         petShopService.deletePet(petID);
+       return "Pet has been deleted successfully";
     }
 
     @PutMapping("/pet/{petID}")
