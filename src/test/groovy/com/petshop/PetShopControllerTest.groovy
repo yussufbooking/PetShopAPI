@@ -50,29 +50,28 @@ class PetShopControllerTest extends Specification {
     }
 
     def "should return empty list when given petID does not exist in database"(){
-        given:
-        petShopService.getPetByID(99) >> { throw new RuntimeException("Pet not found") }
-        println(petShopService.getPetByID(99))
-        when:
-        def result = mockMvc.perform(get("/pet/99"))
-        then:
-        result.andExpect(content().string(" "))
+            given:
+            petShopService.getPetByID(99) >> { throw new RuntimeException("Pet not found") }
 
+            when:
+            def result = mockMvc.perform(get("/pet/99"))
+
+            then:
+            result.andExpect(status().isNotFound())
+                    .andExpect(content().contentType("application/json"))
+                    .andExpect(jsonPath('$.message').value("Pet not found"))
     }
 
     def "should return correct pet when given petID"(){
         given:
-        Integer PetID = 1
-        def pet = new PetDto( name: "Fluffy" , species: "Cat" , age:10,price:100)
+       def pet = PetDto.builder().name("Fluffy").species("Cat").age(10).price(100).build()
 
         petShopService.getPetByID(1) >> pet
-        println(petShopService.getPetByID(1))
         when:
        def result = mockMvc.perform(get("/pet/1"))
+        println(result)
         then:
-        def resposeBody = new JsonSlurper().parseText(result)
-        println(resposeBody)
-        result.andExpect(status().isOk()).andExpect(content().string(""));
+        result.andExpect(content().json("{\"name\":\"Fluffy\",\"species\":\"Cat\",\"age\":10,\"price\":100.0}"));
 
     }
 }

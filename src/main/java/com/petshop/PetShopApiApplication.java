@@ -1,9 +1,9 @@
-package com.petshop.PetShopAPI;
+package com.petshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "com.petshop.PetShopAPI")
+@SpringBootApplication(scanBasePackages = "com.petshop")
 //explicit scan of packages
 public class PetShopApiApplication {
 

@@ -1,6 +1,6 @@
-package com.petshop.PetShopAPI.repository;
+package com.petshop.repository;
 
-import com.petshop.PetShopAPI.entity.Pet;
+import com.petshop.entity.Pet;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

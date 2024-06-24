@@ -1,8 +1,8 @@
-package com.petshop.PetShopAPI.service;
+package com.petshop.service;
 
-import com.petshop.PetShopAPI.dto.PetDto;
-import com.petshop.PetShopAPI.entity.Pet;
-import com.petshop.PetShopAPI.repository.PetRepository;
+import com.petshop.dto.PetDto;
+import com.petshop.entity.Pet;
+import com.petshop.repository.PetRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

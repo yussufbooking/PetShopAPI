@@ -1,4 +1,4 @@
-package com.petshop.PetShopAPI.dto;
+package com.petshop.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

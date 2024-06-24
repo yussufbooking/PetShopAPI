@@ -1,16 +1,14 @@
-package com.petshop.PetShopAPI.controller;
+package com.petshop.controller;
 
-import com.petshop.PetShopAPI.dto.PetDto;
-import com.petshop.PetShopAPI.entity.Pet;
-import com.petshop.PetShopAPI.service.PetShopService;
+import com.petshop.dto.PetDto;
+import com.petshop.entity.Pet;
+import com.petshop.service.PetShopService;
 import lombok.AllArgsConstructor;
 
-import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -29,6 +27,8 @@ public class PetShopController {
     public PetDto getPetByID(@PathVariable Integer petID){
         return petShopService.getPetByID(petID);
     }
+
+
 
     @PostMapping("/pet")
     @ResponseStatus(HttpStatus.CREATED)
