@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column(nullable = false)
     private String name;
@@ -25,7 +25,7 @@ public class Pet {
     @Column(nullable = false)
     private String species;
     private String breed;
-    private Integer age;
+    private int age;
 
     @Column(nullable = false)
     private boolean sold;

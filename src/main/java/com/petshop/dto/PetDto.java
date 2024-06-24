@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class PetDto {
     private String name;
     private String species;
-    private Integer age;
+    private int age;
     private double price;
 }
 
