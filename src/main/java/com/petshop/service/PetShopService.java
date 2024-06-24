@@ -58,6 +58,7 @@ public class PetShopService {
 
     public Pet updatePet(Integer id, Pet updatedPet) {
         return petRepository.findById(id).map(pet -> {
+            pet.setName(updatedPet.getName());
             pet.setAge(updatedPet.getAge());
             pet.setPrice(updatedPet.getPrice());
             pet.setSold(updatedPet.isSold());
