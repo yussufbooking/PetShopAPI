@@ -5,14 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class PetDto {
-    private String name;
-    private String species;
-    private int age;
-    private double price;
+public record PetDto (String name,String species,int age,double price ){
+
 }
 

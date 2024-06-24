@@ -6,7 +6,6 @@ import com.petshop.service.PetShopService;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -30,27 +29,25 @@ public class PetShopController {
         return petShopService.getPetByID(petID);
     }
 
-
-
     @PostMapping("/pet")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String>  addPet(@RequestBody Pet pet){
+    public String  addPet(@RequestBody Pet pet){
         petShopService.addPet(pet);
-        return ResponseEntity.ok("Pet added successfully");
+        return "Pet added successfully";
     }
 
     @DeleteMapping("/pet/{petID}")
     @ResponseStatus (HttpStatus.OK)
-    public ResponseEntity<String> deletePet(@PathVariable Integer petID){
+    public String deletePet(@PathVariable Integer petID){
         petShopService.deletePet(petID);
-        return ResponseEntity.ok("Pet deleted successfully");
+        return "Pet deleted successfully";
     }
 
     @PutMapping("/pet/{petID}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String>  updatePet(@PathVariable("petID") Integer id, @RequestBody Pet pet) {
+    public String updatePet(@PathVariable("petID") Integer id, @RequestBody Pet pet) {
          petShopService.updatePet(id, pet);
-        return ResponseEntity.ok("Pet updated successfully");
+        return "Pet updated successfully";
 
     }
 

@@ -4,8 +4,10 @@ import com.petshop.dto.PetDto;
 import com.petshop.entity.Pet;
 import com.petshop.repository.PetRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,31 +18,23 @@ public class PetShopService {
     private final PetRepository petRepository;
 
     public List<PetDto> getAllPets(){
-        return convertToList((List<Pet>) petRepository.findAll());
+        return convertToList(Streamable.of( petRepository.findAll()).toList());
     }
     private List<PetDto> convertToList(List<Pet> pets){
-        return pets.stream().map(pet -> {
-            if(pet != null){
-                return PetDto.builder()
+        return pets.stream().map(pet ->
+                 PetDto.builder()
                         .name(pet.getName())
                         .species(pet.getSpecies())
                         .age(pet.getAge())
                         .price(pet.getPrice())
-                        .build();
-            }
-            return new PetDto();
-        }).collect(Collectors.toList());
+                        .build()
+        ).collect(Collectors.toList());
     }
 
     public PetDto getPetByID(Integer petID) {
-        Optional<Pet> pet_optional =  petRepository.findById(petID);
-        PetDto pet = pet_optional.map(pet1 ->
-            new PetDto(pet1.getName(),pet1.getSpecies(),pet1.getAge(),pet1.getPrice())
-        ).orElse(null);
-        if(pet == null){
-            throw new RuntimeException("No pet found");
-        }
-        return pet;
+        return petRepository.findById(petID).map(pet1 ->
+                        new PetDto(pet1.getName(),pet1.getSpecies(),pet1.getAge(),pet1.getPrice()))
+                                .orElseThrow(()-> new RuntimeException("No pet found"));
     }
 
     public Pet addPet(Pet pet){
